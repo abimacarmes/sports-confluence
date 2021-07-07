@@ -5,11 +5,11 @@ import './App.css';
 import MainContext from './MainContext'
 
 import Homepage from './Homepage'
-import Game from './Game'
+//import Game from './Game'
 import GameList from './GameList'
 import STORE from './dummy-store';
 import AddGame from './AddGame';
-import Filter from './Filter';
+//import Filter from './Filter';
 
 //import STORE from './old/dummy-store';
 
