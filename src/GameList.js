@@ -5,7 +5,7 @@ import MainContext from './MainContext'
 import Game from './Game';
 import Filter from './Filter';
 
-export default class SpaceContainer extends Component {
+export default class GameList extends Component {
     static contextType = MainContext;
 
     render() {
@@ -24,7 +24,7 @@ export default class SpaceContainer extends Component {
 
         //If the selected filters do not have results, display a message.
         var noResults = "";
-        if(games.length === 0){
+        if(!games){
             noResults = `There are currently no games that fit your filter criteria - please add your own to keep the party going!`
         }
 
@@ -33,7 +33,7 @@ export default class SpaceContainer extends Component {
                 <button><Link to='/add-game'>Add New Game</Link></button>
                 <Filter/>
                 <div>
-                    {games.map(game => <Game key={game.id} info={game}/> )}
+                    {games.map(game => <Game key={game.game_id} info={game}/> )}
                     <p>{noResults}</p>
                 </div>
             </div>

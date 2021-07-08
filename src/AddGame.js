@@ -61,26 +61,24 @@ export default class AddGame extends Component {
                         "location_name": searchResult.name,
                         "address": searchResult.formatted_address,
                         "players": this.newGamePlayers.current.value,
-                        "date": submittedDate
+                        "date": submittedDate,
+                        "image_link": searchResult.photos[0].html_attributions[0]
                     }
                 });
+                console.log(searchResult)
             })
             .catch(error =>
                 console.log(error.message)
             )
-
-            
         }
-
-        
     }
 
     //Upon submission of the searched space to add to database
     submitNewGame = event => {
         event.preventDefault();
 
-        this.context.addGame(this.state.gameInfo)
-        this.props.history.push('/games')
+        //this.context.addGame(this.state.gameInfo)
+        //this.props.history.push('/games')
     }
 
     render() { 

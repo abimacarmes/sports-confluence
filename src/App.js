@@ -6,8 +6,8 @@ import MainContext from './MainContext'
 
 import Homepage from './Homepage'
 import GameList from './GameList'
-import STORE from './dummy-store';
 import AddGame from './AddGame';
+import SingleGameView from './SingeGameView';
 
 const API_URL_BASE = "https://glacial-atoll-16614.herokuapp.com/api"
 
@@ -148,8 +148,9 @@ export default class App extends Component {
         return(
             <>
                 <Route exact path='/' component={Homepage}/>
-                <Route path='/games' component={GameList}/>
+                <Route exact path='/games' component={GameList}/>
                 <Route path='/add-game' component={AddGame}/>
+                <Route path='/games/:game_id' component={SingleGameView}/>
             </>
         )
     }

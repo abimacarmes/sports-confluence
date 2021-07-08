@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import MainContext from './MainContext'
+import {Link} from 'react-router-dom';
 
-export default class Space extends Component {
+export default class Game extends Component {
     static contextType = MainContext;
     constructor (props){
         super(props);
@@ -56,9 +57,10 @@ export default class Space extends Component {
 
         let RSVPs = this.context.players.filter(player => player.game_id === info.game_id).length;
 
+        let gameLink = '/games/' + info.game_id;
         return (
             <div key={info.game_id}>
-                <h3>{info.name}</h3>
+                <h3><Link to={gameLink}>{info.name}</Link></h3>
                 <h3>Sport: {info.sport}</h3>
                 <h3>Date: {info.date}</h3>
                 <h3>Field: {info.location_name} - {info.address}</h3>
