@@ -4,6 +4,8 @@ const MainContext = React.createContext({
     games: [],
     players: [],
     filters: {},
-    updateFilter: () => {}
+    updateFilter: () => {},
+    addGame: () => {},
+    addPlayer: () => {}
 })
 export default MainContext;

@@ -18,8 +18,8 @@ export default class Homepage extends Component {
                     <h3>Pages in the website:</h3>
                     <ul>
                         <li><Link to='/'>Homepage</Link></li>
-                        <li><Link to='/games'>All Spaces</Link></li>
-                        <li><Link to='/add-game'>Add New Space</Link></li>
+                        <li><Link to='/games'>All Games</Link></li>
+                        <li><Link to='/add-game'>Add New Game</Link></li>
                     </ul>
                 </div>
             </div>

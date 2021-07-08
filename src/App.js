@@ -5,15 +5,11 @@ import './App.css';
 import MainContext from './MainContext'
 
 import Homepage from './Homepage'
-//import Game from './Game'
 import GameList from './GameList'
 import STORE from './dummy-store';
 import AddGame from './AddGame';
-//import Filter from './Filter';
 
-//import STORE from './old/dummy-store';
-
-//const API_URL_BASE = "https://enigmatic-basin-32386.herokuapp.com/api"
+const API_URL_BASE = "https://glacial-atoll-16614.herokuapp.com/api"
 
 export default class App extends Component {
     static contextType = MainContext;
@@ -22,51 +18,68 @@ export default class App extends Component {
             city: '',
             sport:''
         }
-    }  
+    }
 
     //Loads backend data upon page load.
     componentDidMount(){
-        /*
-        fetch(`${API_URL_BASE}/spaces`)
-        .then(spacesResult => {
-            if(!spacesResult.ok){
+        fetch(`${API_URL_BASE}/games`)
+        .then(gamesResult => {
+            if(!gamesResult.ok){
                 throw new Error('Something went wrong.');
             }
-            return spacesResult.json()
+            return gamesResult.json()
         })
-        .then(spacesJson => {
+        .then(gamesJson => {
             this.setState({
-                spaces: spacesJson
+                games: gamesJson
             })
         })
         .catch(error =>
             console.log(error.message)
         )
-        */
+
+        fetch(`${API_URL_BASE}/players`)
+        .then(playersResult => {
+            if(!playersResult.ok){
+                throw new Error('Something went wrong.');
+            }
+            return playersResult.json()
+        })
+        .then(playersJson => {
+            this.setState({
+                players: playersJson
+            })
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+        
     }
     
     //Upon submission of a new Game for backend.
-    addSpace = (game) => {
-        console.log('Adding Game')
-        //const oldGames = this.state.games
+    addGame = (game) => {
+        const oldGames = this.state.games
+        game.game_id = oldGames.length+1;
 
-        //oldGames.push({new addition})
+        oldGames.push(game)
 
         this.setState({
-            //spaces: oldGames
+            games: oldGames
         })
-        
-        /*
-        fetch(`${API_URL_BASE}/spaces`, {
+
+        fetch(`${API_URL_BASE}/games`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
             },
             body: JSON.stringify({
-                "name":`${name}`,
-                "address":`${address}`,
-                "city":`${city}`,
-                "type":`${type}`
+                "game_id":`${game.game_id}`,
+                "name":`${game.name}`,
+                "sport": `${game.sport}`,
+                "location_name":`${game.location_name}`,
+                "address":`${game.address}`,
+                "players":`${game.players}`,
+                "date":`${game.date}`
             })
           }
         )
@@ -79,13 +92,43 @@ export default class App extends Component {
         .catch(error => {
             console.log(error.message)
         })        
-        */
+        
     }
 
 
     //Upon submission of a new player RSVPing for backend.
     addPlayer = (player) => {
-        console.log('Add player');
+        const oldPlayers = this.state.players;
+        player.player_id = oldPlayers.length+1;
+        oldPlayers.push(player)
+
+        this.setState({
+            players: oldPlayers
+        })
+
+        fetch(`${API_URL_BASE}/players`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                "player_id":`${player.player_id}`,
+                "name":`${player.name}`,
+                "level":`${player.level}`,
+                "comment":`${player.comment}`,
+                "game_id":`${player.game_id}`
+            })
+          }
+        )
+        .then(result => {
+            if(!result.ok){
+                throw new Error('Something went wrong.')
+            }
+            return result.json()
+        })
+        .catch(error => {
+            console.log(error.message)
+        }) 
     }
     
     //Context function for updating the filters
@@ -115,9 +158,10 @@ export default class App extends Component {
         const contextValue = {
             filters: this.state.filters,
             updateFilter: this.updateFilter,
-            games: STORE.games,
-            players: STORE.players
-
+            games: this.state.games,
+            players: this.state.players,
+            addGame: this.addGame,
+            addPlayer: this.addPlayer
         }       
 
         return(

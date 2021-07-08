@@ -14,16 +14,21 @@ export default class Space extends Component {
         displayForm: false
     }
 
-    RSVP = (event) => {
+    RSVP = event => {
         event.preventDefault();
         let playerRSVP = {
-            name: this.player.current.value,
-            skillLevel: this.skillLevel.current.value,
-            comment: this.comments.current.value,
-            game_id: this.props.info.game_id
+            "player_id": 12,
+            "name": this.player.current.value,
+            "level": this.skillLevel.current.value,
+            "comment": this.comments.current.value,
+            "game_id": this.props.info.game_id
         }
 
-        console.log(playerRSVP)
+        this.context.addPlayer(playerRSVP)
+
+        this.setState({
+            displayForm: false
+        })
 
     }
 
@@ -33,7 +38,7 @@ export default class Space extends Component {
         if(this.state.displayForm){
             RSVP_form = (
                 <form onSubmit={this.RSVP}>
-                    <label>Name:</label><input type='text' id='player-name-input'ref={this.player}></input>
+                    <label>Name:</label><input type='text' id='player-name-input'ref={this.player} required></input>
                     <label>Skill Level:</label>
                         <select ref={this.skillLevel}>
                             <option key='Beginner' value='Beginner'>Beginner</option>

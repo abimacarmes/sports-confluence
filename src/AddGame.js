@@ -56,7 +56,6 @@ export default class AddGame extends Component {
                     displaySearch: true,
                     locationResults: searchResult,
                     gameInfo: {
-                        "game_id": 4,
                         "name": this.newGameName.current.value,
                         "sport": this.newGameSport.current.value,
                         "location_name": searchResult.name,
@@ -79,8 +78,9 @@ export default class AddGame extends Component {
     //Upon submission of the searched space to add to database
     submitNewGame = event => {
         event.preventDefault();
-        //this.context.addSpace(this.state.spaceSearch.name, this.state.spaceSearch`1``1p.address, this.state.spaceSearch.city, this.state.spaceSearch.type);      
-        //this.props.history.push('/spaces')
+
+        this.context.addGame(this.state.gameInfo)
+        this.props.history.push('/games')
     }
 
     render() { 
