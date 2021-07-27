@@ -1,17 +1,153 @@
-.allCode{
-    flex-direction: column;
-    display: flex;
+header a{
+    text-transform: uppercase;
+    color:white;
+    text-decoration: none;
+}
+header{
+    box-sizing: border-box;
+    background-color: #C00606;
+    padding: 25px;
+
+    font-size: 28px;
+    letter-spacing: 10px;
+    text-align: right;
+
+    text-transform: uppercase;
+    color:white;
+}
+.add-game-button{
+    float:right;
+    padding: 10px;
+    margin-top: 13px;
+    margin-right: 20px;
+
+    border:0;
+    border-radius: 8px;
+
+    font-size: medium;
+    text-decoration: none; 
+}
+.add-game-button a{
+    text-decoration: none;
+    color: #4F4E56;
+}
+.filter{
+    font-size: medium;
+
+    border-color: #817F89;
+    border-style: solid;
+    border-width: 2px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right: auto;
+
+    padding: 20px;
+    border-radius: 10px;
+    width: 1000px;
 }
 
-div{
+.filter label{
+    margin-right: 15px;
+}
+
+.filter button{
+    border:0;
+    padding: 5px;
+    
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.game{
+    width: 1000px;
+
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+
+    border-color: #274567;
     border-style: solid;
-    border-color: black;
-    border: 5px;
+    border-width: 3.5px;
+    border-left-width: 10px;
+
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+    background-color: #CBCACE;
+    color: #1C314A;
+}
+
+.game-headers{
+    flex-direction:row;
+    flex: 1;    
+}
+
+.game-headers a{
+    text-decoration: underline;
+    text-decoration-color: #1C314A;
+    color: #C00606;    
+}
+
+.game-date-field{
+    flex-direction:row;
+    flex:2;
+}
+
+.game-RSVP{
+    flex:1;
+    flex-direction:row;
+}
+
+.game button{
+    border:0;
+    padding: 5px;
+    
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.RSVP-form{
+    border-style: solid;
+    border-color: #4F4E56;  
+}
+
+.RSVP-form label{
+    margin: 15px;
+}
+.RSVP-form button{
+    margin: 15px;
+}
+.new-game-form ul{
+    width: 300px;
+    padding-left:0px;
+    list-style-type: none;
+}
+
+.new-game-form input{
+    margin-left: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.new-game-form select{
+    margin-left: 5px;
+    width: 100%;
+    margin-bottom: 15px; 
+}
+
+.game-horizontal-group{
+    display:flex;
+    flex-direction:row;
+}
+
+.game-vertical-group{
+    flex-direction: column;
 }
 
 *{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Times New Roman', Times, serif, Verdana, sans-serif;
 }
 
 @media all and (min-width: 600px){

@@ -168,14 +168,13 @@ export default class App extends Component {
         return(
             <BrowserRouter>
                 <MainContext.Provider value={contextValue}>
-                    <header>
+                    
+                    <header className='header'>
                         <Link to='/games'><h1>Sports Confluence</h1></Link>
                     </header>
-                    <div className='app'>
-                            <main>
-                                {this.mainRoutes()}
-                            </main>
-                    </div>
+                        <main className='app'>
+                            {this.mainRoutes()}
+                        </main>
                 </MainContext.Provider>
             </BrowserRouter>
             

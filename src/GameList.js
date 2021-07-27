@@ -30,7 +30,7 @@ export default class GameList extends Component {
 
         return (
             <div>
-                <button><Link to='/add-game'>Add New Game</Link></button>
+                <button className='add-game-button'><Link to='/add-game'>Add New Game</Link></button>
                 <Filter/>
                 <div>
                     {games.map(game => <Game key={game.game_id} info={game}/> )}

@@ -38,16 +38,16 @@ export default class Game extends Component {
 
         if(this.state.displayForm){
             RSVP_form = (
-                <form onSubmit={this.RSVP}>
-                    <label>Name:</label><input type='text' id='player-name-input'ref={this.player} required></input>
-                    <label>Skill Level:</label>
+                <form onSubmit={this.RSVP} className="RSVP-form">
+                    <label><b>Name:</b></label><input type='text' id='player-name-input'ref={this.player} required></input>
+                    <label><b>Skill Level:</b></label>
                         <select ref={this.skillLevel}>
                             <option key='Beginner' value='Beginner'>Beginner</option>
                             <option key='Mid' value='Mid-Level'>Mid-Level</option>
                             <option key='Advanced' value='Semi-Pro'>Semi-Pro</option>
                             <option key='Super_Advanced' value='Olympic Ready!'>Olympic Ready!</option>
                         </select>
-                    <label>Additional Comments:</label><input type='text' id='comments' ref={this.comments}></input>
+                    <label><b>Additional Comments:</b></label><input type='text' id='comments' ref={this.comments}></input>
                     <button type='submit'>Submit</button>
                 </form>
             ) 
@@ -59,14 +59,24 @@ export default class Game extends Component {
 
         let gameLink = '/games/' + info.game_id;
         return (
-            <div key={info.game_id}>
-                <h3><Link to={gameLink}>{info.name}</Link></h3>
-                <h3>Sport: {info.sport}</h3>
-                <h3>Date: {info.date}</h3>
-                <h3>Field: {info.location_name} - {info.address}</h3>
-                <h3>Number of Players: {RSVPs}/{info.players}</h3>
-                <button onClick={() => this.setState({displayForm: true})}>RSVP for Game</button>
-                {RSVP_form}
+            <div className='game' key={info.game_id}>
+                <div className='game-horizontal-group'>
+                    <div className='game-headers'>
+                        <h2><Link to={gameLink}>{info.name}</Link></h2>
+                        <h3><u>Sport:</u> {info.sport}</h3>
+                    </div>
+                    <div className='game-date-field'>
+                        <h3><u>Date:</u> {info.date}</h3>
+                        <h3><u>Field:</u> {info.location_name} - {info.address}</h3>
+                    </div>
+                    <div className='game-RSVP'>
+                        <h3><u>Number of Players:</u> {RSVPs}/{info.players}</h3>
+                        <button onClick={() => this.setState({displayForm: !this.state.displayForm})}>RSVP for Game</button>
+                    </div>
+                </div>
+                <div className='game-vertical-group'>
+                    {RSVP_form}
+                </div>
             </div>
         )
     }

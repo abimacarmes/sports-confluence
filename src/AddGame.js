@@ -98,19 +98,21 @@ export default class AddGame extends Component {
             <div>
                 <div>
                     <h3>Create New Game:</h3> 
-                    <form onSubmit={this.gameLocationSearch}>
-                        <label>Name:</label><input type='text' id='name' ref={this.newGameName} required></input>
-                        <label>Location:</label><input type='text' id='location' ref={this.newGameLocation} required></input>
-                        <label>Number of Players:</label><input type='number' id='players' ref={this.newGamePlayers} required></input>
-                        <label>Date:</label><input type='datetime-local' id='date' ref={this.newGameDate} required></input>
-                        <label>Sport:</label>
-                            <select ref={this.newGameSport} required>
-                                {sports.map(sport => (
-                                    <option key={sport} value={sport}>{sport}</option>
-                                ))}
-                                <option key='Other' value='Other'>Other</option>
-                            </select>
-                        <button type='submit'>Submit</button>
+                    <form className='new-game-form' onSubmit={this.gameLocationSearch}>
+                        <ul>
+                            <li><label><b>Name:</b></label><input type='text' id='name' ref={this.newGameName} required></input></li>
+                            <li><label><b>Location:</b></label><input type='text' id='location' ref={this.newGameLocation} required></input></li>
+                            <li><label><b>Number of Players:</b></label><input type='number' id='players' ref={this.newGamePlayers} required></input></li>
+                            <li><label><b>Date:</b></label><input type='datetime-local' id='date' ref={this.newGameDate} required></input></li>
+                            <li><label><b>Sport:</b></label>
+                                <select ref={this.newGameSport} required>
+                                    {sports.map(sport => (
+                                        <option key={sport} value={sport}>{sport}</option>
+                                    ))}
+                                    <option key='Other' value='Other'>Other</option>
+                                </select></li>
+                            <li><button type='submit'><b>Submit</b></button></li>
+                        </ul>
                     </form>
                 </div>
                 {sampleGame}

@@ -33,9 +33,10 @@ export default class Filter extends Component {
         const sports = [...new Set(this.context.games.map(game => game.sport))]        
 
         return (
-            <div className="filter content">
-                <form className="triple filterGroup" onSubmit={this.filterResults}>
-                    <h4>Filter By</h4>
+            <div className="filter">
+                <form onSubmit={this.filterResults}>
+                    <label><b>Filter By:</b></label>
+                    <label>    </label>
                     <label>City: </label>
                     <select ref={this.cityFilter}>
                         <option key='All' value=''></option>
@@ -43,6 +44,7 @@ export default class Filter extends Component {
                             <option key={city} value={city}>{city}</option>
                         ))}
                     </select>
+                    <label></label>
                     <label>Sport: </label>
                     <select ref={this.sportFilter}>
                         <option key='All' value=''></option>
@@ -50,6 +52,7 @@ export default class Filter extends Component {
                             <option key={sport} value={sport}>{sport}</option>
                         ))}
                     </select>
+                    <label>  </label>
                     <button type='submit'>Submit</button>
                 </form>
             </div>
