@@ -14,6 +14,8 @@ const API_URL_BASE = "https://glacial-atoll-16614.herokuapp.com/api"
 export default class App extends Component {
     static contextType = MainContext;
     state = {
+        games: [],
+        players: [],
         filters: {
             city: '',
             sport:''

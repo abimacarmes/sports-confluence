@@ -24,7 +24,7 @@ export default class GameList extends Component {
 
         //If the selected filters do not have results, display a message.
         var noResults = "";
-        if(!games){
+        if(games.length === 0){
             noResults = `There are currently no games that fit your filter criteria - please add your own to keep the party going!`
         }
 
