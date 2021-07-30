@@ -38,6 +38,15 @@ export default class AddGame extends Component {
             errorMessage:''
         })
 
+        let submittedSport;
+
+        if(this.newGameSport.current.value === 'Other'){
+            submittedSport = this.newGameSportOther.current.value
+        }
+        else{
+            submittedSport = this.newGameSport.current.value
+        }
+
         //Make sure the date is valid
         if(submittedDate > today && this.newGamePlayers.current.value > 0){
             var searchResult = {}
