@@ -12,11 +12,13 @@ export default class AddGame extends Component {
         this.newGameSport = React.createRef();
         this.newGamePlayers = React.createRef();
         this.newGameDate = React.createRef();
+        this.newGameSportOther = React.createRef();
         
     }
 
     state = {
-        displaySearch: false,
+        otherSport: '',
+        sportOther: false,
         locationResults: {},
         gameInfo: {},
         errorMessage:''
@@ -37,7 +39,7 @@ export default class AddGame extends Component {
         })
 
         //Make sure the date is valid
-        if(submittedDate > today){
+        if(submittedDate > today && this.newGamePlayers.current.value > 0){
             var searchResult = {}
             submittedDate = submittedDate.toLocaleDateString() +" "+ submittedTime;
             //Ensures the correct formatting for search
@@ -65,11 +67,15 @@ export default class AddGame extends Component {
                         "image_link": searchResult.photos[0].html_attributions[0]
                     }
                 });
-                console.log(searchResult)
             })
             .catch(error =>
                 console.log(error.message)
             )
+        }
+        else{
+            this.setState({
+                errorMessage: "Please ensure you have selected a date in the future and specified a number of players greater than 0."
+            })
         }
     }
 
@@ -77,8 +83,26 @@ export default class AddGame extends Component {
     submitNewGame = event => {
         event.preventDefault();
 
-        //this.context.addGame(this.state.gameInfo)
-        //this.props.history.push('/games')
+        this.context.addGame(this.state.gameInfo)
+        this.props.history.push('/games')
+    }
+
+    //If the sport selected is "Other" display an input box
+    sportChange = event => {
+        event.preventDefault();
+
+        let otherSport = <li><input type="text" id='sport' ref={this.newGameSportOther}></input></li>
+
+        if(this.newGameSport.current.value === 'Other'){
+            this.setState({
+                otherSport: otherSport
+            })
+        }
+        else{
+            this.setState({
+                otherSport: ''
+            })
+        }
     }
 
     render() { 
@@ -86,12 +110,12 @@ export default class AddGame extends Component {
         let sampleConfirmButton;
         let errorMessage = this.state.errorMessage;
 
-        const sports = [...new Set(this.context.games.map(game => game.sport))]  
+        const sports = [...new Set(this.context.games.map(game => game.sport))] 
 
         //Loads sample Space if state variable "True"
         if(this.state.displaySearch){
             sampleGame = <div><h3>Sample Game:</h3><Game info={this.state.gameInfo}/></div>
-            sampleConfirmButton = <form onSubmit={this.submitNewGame}><button type='submit'>Submit New Space</button></form>
+            sampleConfirmButton = <form onSubmit={this.submitNewGame}><button type='submit'><b>Submit New Space</b></button></form>
         }
 
         return (
@@ -105,12 +129,13 @@ export default class AddGame extends Component {
                             <li><label><b>Number of Players:</b></label><input type='number' id='players' ref={this.newGamePlayers} required></input></li>
                             <li><label><b>Date:</b></label><input type='datetime-local' id='date' ref={this.newGameDate} required></input></li>
                             <li><label><b>Sport:</b></label>
-                                <select ref={this.newGameSport} required>
+                                <select onChange={this.sportChange} ref={this.newGameSport} required>
                                     {sports.map(sport => (
-                                        <option key={sport} value={sport}>{sport}</option>
+                                        <option key={sport} value={sport} selected>{sport}</option>
                                     ))}
                                     <option key='Other' value='Other'>Other</option>
                                 </select></li>
+                                {this.state.otherSport}
                             <li><button type='submit'><b>Submit</b></button></li>
                         </ul>
                     </form>
