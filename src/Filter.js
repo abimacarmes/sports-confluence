@@ -20,7 +20,6 @@ export default class Filter extends Component {
             sport:this.sportFilter.current.value
         }
 
-        console.log(filters)
         this.context.updateFilter(filters.city, filters.sport);
     }
 

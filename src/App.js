@@ -135,8 +135,6 @@ export default class App extends Component {
     
     //Context function for updating the filters
     updateFilter = (city, sport) => {
-        console.log('Filter: ' + city + ' ' + sport);
-
         this.setState({
             filters: {
                 city: city,
