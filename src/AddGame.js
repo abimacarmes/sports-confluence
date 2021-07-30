@@ -68,7 +68,7 @@ export default class AddGame extends Component {
                     locationResults: searchResult,
                     gameInfo: {
                         "name": this.newGameName.current.value,
-                        "sport": this.newGameSport.current.value,
+                        "sport": submittedSport,
                         "location_name": searchResult.name,
                         "address": searchResult.formatted_address,
                         "players": this.newGamePlayers.current.value,
