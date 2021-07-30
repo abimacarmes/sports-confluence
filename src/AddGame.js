@@ -54,7 +54,7 @@ export default class AddGame extends Component {
             //Ensures the correct formatting for search
             const formattedSearch = this.newGameLocation.current.value.split(' ').join('%20');
 
-            fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${formattedSearch}&inputtype=textquery&fields=formatted_address,name,photos&key=AIzaSyB0ksRosNOMHsE-YH4uj5eB27eW0fHwdlc`)
+            fetch(`https://still-falls-67435.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${formattedSearch}&inputtype=textquery&fields=formatted_address,name,photos&key=AIzaSyB0ksRosNOMHsE-YH4uj5eB27eW0fHwdlc`)
             .then(searchResult => {
                 if(!searchResult.ok){
                     throw new Error('Something went wrong.');
