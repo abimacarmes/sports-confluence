@@ -7,7 +7,7 @@ import MainContext from './MainContext'
 import Homepage from './Homepage'
 import GameList from './GameList'
 import AddGame from './AddGame';
-import SingleGameView from './SingeGameView';
+import SingleGameView from './SingleGameView';
 
 const API_URL_BASE = "https://glacial-atoll-16614.herokuapp.com/api"
 
