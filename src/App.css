@@ -1,166 +1,140 @@
-header a{
-    text-transform: uppercase;
-    color:white;
-    text-decoration: none;
-}
-header{
+/*Header*/
+header, header a{
     box-sizing: border-box;
     background-color: #C00606;
     padding: 25px;
 
-    font-size: 28px;
+    font-size: x-large;
     letter-spacing: 10px;
     text-align: right;
-
-    text-transform: uppercase;
-    color:white;
-}
-.add-game-button{
-    float:right;
-    padding: 10px;
-    margin-top: 13px;
-    margin-right: 20px;
-
-    border:0;
-    border-radius: 8px;
-
-    font-size: medium;
-    text-decoration: none; 
-}
-.add-game-button a{
     text-decoration: none;
-    color: #4F4E56;
+    color: white;
+    text-transform: uppercase;
 }
+
+/*Filter*/
 .filter{
-    font-size: medium;
+    padding: 10px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-start;
 
     border-color: #817F89;
     border-style: solid;
     border-width: 2px;
-
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left:auto;
-    margin-right: auto;
-
-    padding: 20px;
     border-radius: 10px;
-    width: 1000px;
-}
 
-.filter label{
-    margin-right: 15px;
+    margin-top:10px;
+    margin-bottom: 10px;
 }
-
-.filter button{
+.filter-item{
+    flex: 1;
+}
+.filter-item label, .filter-item select{
+    font-size: large;
+}
+.add-game-button, .add-game-button a, .filter-item button{
     border:0;
-    padding: 5px;
-    
-    text-decoration: none;
     border-radius: 8px;
+
+    font-size: large;
+    text-decoration: none;
+    color: #4F4E56;
 }
 
+/*Game*/
 .game{
-    width: 1000px;
-
-    margin-left:auto;
-    margin-right: auto;
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
 
     border-color: #274567;
     border-style: solid;
     border-width: 3.5px;
     border-left-width: 10px;
 
-    padding-left: 10px;
-    padding-bottom: 10px;
-
-    background-color: #CBCACE;
-    color: #1C314A;
+    margin-bottom: 10px;
 }
-
-.game-headers{
-    flex-direction:row;
-    flex: 1;    
-}
-
-.game-headers a{
-    text-decoration: underline;
-    text-decoration-color: #1C314A;
-    color: #C00606;    
-}
-
-.game-date-field{
-    flex-direction:row;
-    flex:2;
-}
-
-.game-RSVP{
+.game-horizontal-group, .game-vertical-group{
+    display:flex;
+    flex-direction: column;
     flex:1;
-    flex-direction:row;
 }
-
+.game-headers, .game-date-field, .game-RSVP, .game-vertical-group{
+    flex:1;
+}
+.game-headers a{
+    text-decoration-color: #1C314A;
+    color: #C00606;
+}
 .game button{
-    border:0;
+    border:0px;
     padding: 5px;
-    
-    text-decoration: none;
+
+    text-decoration:none;
     border-radius: 8px;
 }
 
+/*RSVP Form*/
 .RSVP-form{
     border-style: solid;
-    border-color: #4F4E56;  
+    border-color: #4F4E56;
+    margin:10px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+.RSVP-form label, .RSVP-form button, .RSVP-form select, .RSVP-form input{
+    margin-left: 15px;
+    flex: 1;
+    font-size: medium;
 }
 
-.RSVP-form label{
-    margin: 15px;
-}
-.RSVP-form button{
-    margin: 15px;
+/*New Game*/
+.new-game-form{
+    display: flex;
+    flex-direction: column;
 }
 .new-game-form ul{
-    width: 300px;
-    padding-left:0px;
     list-style-type: none;
+    padding-left: 0px;
 }
-
-.new-game-form input{
+.new-game-form input, .new-game-form select{
     margin-left: 5px;
     width: 100%;
     margin-bottom: 15px;
 }
 
-.new-game-form select{
-    margin-left: 5px;
-    width: 100%;
-    margin-bottom: 15px; 
-}
+/*Phone Sized*/
+@media all and (min-width: 600px){
+    /*Header*/
+    header, header a{
+        letter-spacing: 5px;
+    }
 
-.game-horizontal-group{
-    display:flex;
-    flex-direction:row;
-}
+    /*Filter*/
+    .filter{
+        flex-direction:row;
+    }
 
-.game-vertical-group{
-    flex-direction: column;
+    /*Game*/
+    .game-horizontal-group{
+        flex-direction: row;
+    }
+
+    /*RSVP Form*/
+    .RSVP-form{
+        flex-direction: row;
+    }
+
+    /*New Game*/
+    .new-game-form{
+        flex-direction: row;
+    }
 }
 
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Times New Roman', Times, serif, Verdana, sans-serif;
 }
 
-@media all and (min-width: 600px){
-    .content{
-        flex-direction:row;
-    }
-    .triple{
-        flex:3;
-    }
-    .item{
-        flex:1;
-    }
-    .double{
-        flex:2;
-    }
-}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-//import {Link} from 'react-router-dom';
 import MainContext from './MainContext'
+import {Link} from 'react-router-dom';
 
 export default class Filter extends Component {
     static contextType = MainContext;
@@ -32,29 +32,35 @@ export default class Filter extends Component {
         const sports = [...new Set(this.context.games.map(game => game.sport))]        
 
         return (
-            <div className="filter">
-                <form onSubmit={this.filterResults}>
-                    <label><b>Filter By:</b></label>
-                    <label>    </label>
-                    <label>City: </label>
-                    <select ref={this.cityFilter}>
-                        <option key='All' value=''></option>
-                        {cities.map(city => (
-                            <option key={city} value={city}>{city}</option>
-                        ))}
-                    </select>
-                    <label></label>
-                    <label>Sport: </label>
-                    <select ref={this.sportFilter}>
-                        <option key='All' value=''></option>
-                        {sports.map(sport => (
-                            <option key={sport} value={sport}>{sport}</option>
-                        ))}
-                    </select>
-                    <label>  </label>
-                    <button type='submit'>Submit</button>
+                <form className="filter" onSubmit={this.filterResults}>
+                    <div className="filter-item">
+                        <h3><b>Filter By:</b></h3>
+                    </div>
+                    <div className='filter-item'>
+                        <label>City: </label>
+                        <select ref={this.cityFilter}>
+                            <option key='All' value=''></option>
+                            {cities.map(city => (
+                                <option key={city} value={city}>{city}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className='filter-item'>
+                        <label>Sport: </label>
+                        <select ref={this.sportFilter}>
+                            <option key='All' value=''></option>
+                            {sports.map(sport => (
+                                <option key={sport} value={sport}>{sport}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className='filter-item'>
+                        <button type='submit'>Submit</button>
+                    </div>
+                    <div className='filter-item'>
+                        <button className='add-game-button'><Link to='/add-game'>Add New Game</Link></button>
+                    </div>
                 </form>
-            </div>
         )
     }
 }

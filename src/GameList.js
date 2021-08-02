@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
 import MainContext from './MainContext'
 
 import Game from './Game';
@@ -30,7 +29,6 @@ export default class GameList extends Component {
 
         return (
             <div>
-                <button className='add-game-button'><Link to='/add-game'>Add New Game</Link></button>
                 <Filter/>
                 <div>
                     {games.map(game => <Game key={game.game_id} info={game}/> )}
